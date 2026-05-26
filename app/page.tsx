@@ -4,11 +4,11 @@ const PRICE_MONTHLY_URL = "#pricing"; // TODO: replace with GHL checkout link fo
 const PRICE_ANNUAL_URL = "#pricing";  // TODO: replace with GHL checkout link for $1,000/yr
 
 const founders = [
-  { name: "Justin Falck", title: "Founding Member", specialty: "Marketing & Direct Response" },
-  { name: "Landon Rhodes", title: "Founding Member", specialty: "Operations & Leadership" },
-  { name: "Megan Rhodes", title: "Founding Member", specialty: "Brand & Culture" },
-  { name: "Austin Hall", title: "Founding Member", specialty: "Sales & Revenue Systems" },
-  { name: "Darren Clausen", title: "Founding Member", specialty: "Strategy & Long-Term Vision" },
+  { name: "Justin Falck", image: "/founders/justin.jpg", title: "Founding Member", specialty: "Marketing & Direct Response" },
+  { name: "Landon Rhodes", image: "/founders/landon.jpg", title: "Founding Member", specialty: "Operations & Leadership" },
+  { name: "Megan Rhodes", image: "/founders/megan.jpg", title: "Founding Member", specialty: "Brand & Culture" },
+  { name: "Austin Hall", image: "/founders/austin.jpg", title: "Founding Member", specialty: "Sales & Revenue Systems" },
+  { name: "Darren Clausen", image: "/founders/darren.jpg", title: "Founding Member", specialty: "Strategy & Long-Term Vision" },
 ];
 
 const stack = [
@@ -261,8 +261,16 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
             {founders.map((f) => (
-              <div key={f.name} className="bg-white border border-forge-ink/10 p-6 text-center">
-                <div className="aspect-square bg-forge-ink/5 mb-4 flex items-center justify-center text-forge-stone text-xs">[Photo]</div>
+              <div key={f.name} className="bg-white border border-forge-ink/10 p-3 text-center">
+                <div className="relative aspect-[4/5] bg-forge-ink/5 mb-4 overflow-hidden">
+                  <Image
+                    src={f.image}
+                    alt={f.name}
+                    fill
+                    sizes="(min-width: 768px) 20vw, 50vw"
+                    className="object-cover"
+                  />
+                </div>
                 <p className="display text-base">{f.name}</p>
                 <p className="text-xs text-forge-stone mt-1">{f.specialty}</p>
               </div>

@@ -44,11 +44,11 @@ const notForYou = [
 ];
 
 const founders = [
-  "Justin Falck",
-  "Landon Rhodes",
-  "Megan Rhodes",
-  "Austin Hall",
-  "Darren Clausen",
+  { name: "Justin Falck", image: "/founders/justin.jpg" },
+  { name: "Landon Rhodes", image: "/founders/landon.jpg" },
+  { name: "Megan Rhodes", image: "/founders/megan.jpg" },
+  { name: "Austin Hall", image: "/founders/austin.jpg" },
+  { name: "Darren Clausen", image: "/founders/darren.jpg" },
 ];
 
 function CheckoutForm({ children, className }: { children: React.ReactNode; className: string }) {
@@ -248,9 +248,18 @@ export default function EventPage() {
             thousands of owners, and learned the hard way what actually works.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {founders.map((name) => (
-              <div key={name} className="bg-white border border-forge-ink/10 p-5">
-                <p className="display text-base">{name}</p>
+            {founders.map((founder) => (
+              <div key={founder.name} className="bg-white border border-forge-ink/10 p-3">
+                <div className="relative aspect-[4/5] bg-forge-ink/5 mb-4 overflow-hidden">
+                  <Image
+                    src={founder.image}
+                    alt={founder.name}
+                    fill
+                    sizes="(min-width: 768px) 20vw, 50vw"
+                    className="object-cover"
+                  />
+                </div>
+                <p className="display text-base">{founder.name}</p>
               </div>
             ))}
           </div>
